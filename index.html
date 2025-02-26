@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pondok XYZ - Pendidikan dan Karakter</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #B0E0E6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Navbar */
+    nav {
+      width: 100%;
+      background: #2c3e50;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 10px 20px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+    }
+    nav li {
+      margin-left: 30px;
+    }
+    nav a {
+      color: #fff;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ff6f61;
+    }
+    /* Header / Hero Section */
+    header {
+      background-image: url('a.jpg');
+      background-size: cover;
+     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('a.jpg')no-repeat center center/cover; 
+      height: 100vh;
+      position: relative;
+      text-align: center;
+      color: black;
+      padding-top: 60px; /* space for navbar */
+    }
+    header .content {
+     /* position: relative;
+      z-index: 1;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 0.5em;
+    }
+    header p {
+      font-size: 1.5em*/;*/
+    }
+    /* Button */
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      color: #fff;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      margin-top: 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      background: #ff6f61;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #e65b50;
+    }
+    /* Section Styles */
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      color: #2c3e50;
+    }
+    /* Profil Pengasuh */
+    .profile {
+      text-align: center;
+    }
+    .profile img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #ddd;
+    }
+    /* Flex Container untuk Card */
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      flex: 1;
+      min-width: 280px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .card img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #ccc;
+    }
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 1.8em;
+      color: #34495e;
+    }
+    .card p {
+      font-size: 1em;
+      color: #555;
+    }
+    /* Penawaran Sekolah Cards */
+    .offer-card img {
+      width: 50%;
+      height: 50%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    /* Gallery Section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    /* List Section untuk Pendidikan, Fasilitas, Persyaratan */
+    .list-section {
+      margin-bottom: 40px;
+    }
+    .list-section ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      color: #555;
+    }
+    .list-section li {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+    /* PPDB Section */
+    #ppdb {
+      background: #B0E0E6;
+      padding: 80px 20px;
+      text-align: center;
+/*      border-top: 5px solid #ff6f61;*/
+    }
+    #ppdb h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    #ppdb p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      header p {
+        font-size: 1.2em;
+      }
+      nav ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#home">BERANDA</a></li>
+      <li><a href="#ppdb">PPDB</a></li>    
+      <li><a href="#PROGRAM PENDIDIKAN">PROGRAM</a></li>
+      <li><a href="#beasiswa">BEASISWA</a></li>
+      <li><a href="https://www.perpusnas.go.id/">PERPUSTAKAAN</a></li>
+
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <div class="slideshow-container">
+      <div class="slide"><img src="a.jpg" alt="Gambar 1"></div>
+      <div class="slide"><img src="ngaji.jpg" alt="Gambar 2"></div>
+      <div class="slide"><img src="msjd.jpg" alt="Gambar 3"></div>
+    </div>
+    <div class="content">
+      <h1>مرحباً بكم في مدرسة القرآن زين الدين الإسلامية الداخلية</h1>
+      <h2> VISI</h2>
+      <h2>TERWUJUDNYA GENERASI QUR'ANI DI SELURUH PELOSOK NEGERI</h2>
+      <h2>Membangun Karakter & Prestasi</h2>
+      <a href="#ppdb" class="btn">Daftar Sekarang</a>
+    </div>
+  </header>
+  <script>
+    let slideIndex = 0;
+    function showSlides() {
+      let slides = document.querySelectorAll(".slide");
+      slides.forEach(slide => slide.style.opacity = "0");
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].style.opacity = "1";
+      setTimeout(showSlides, 3000);
+    }
+    document.addEventListener("DOMContentLoaded", showSlides);
+  </script>
+  <!-- Profil Pengasuh -->
+  <section id="pengasuh">
+    <h2 style="background-color:skyblue;"> Profil Pengasuh</h2>
+    <div class="profile">
+      <img src="abbi.jpeg" alt="Foto Pengasuh" />
+      <h3>KH. LUKMAN ALHAKIM ALHAFIDZ</h3>
+      <p align="center">
+        Pengasuh kami memiliki pengalaman luas dalam mendidik dan membimbing para santri.
+        Dengan hati yang tulus dan visi yang jelas, beliau menjadi inspirasi dalam mencetak generasi yang berakhlak dan cerdas.
+      </p>
+    </div>
+  </section>
+<!-- Kepala Sekolah SMK dan SMP -->
+  <section id="kepala-sekolah">
+    <h2 style="background-color:skyblue;">Kepala Sekolah</h2>
+    <div class="flex">
+      <!-- Kepala Sekolah SMK -->
+      <div class="card">
+        <img src="pa uki.jpg" alt="Kepala Sekolah SMK" />
+        <h3>Kepala Sekolah SMK</h3>
+        <h1>Imam Marzuki S.Pd</h1>
+        <p class="p">
+          Beliau memiliki pengalaman pendidikan yang mendalam dan komitmen tinggi untuk mengembangkan potensi siswa di SMK melalui inovasi dan pembelajaran berbasis industri.
+        </p>
+      </div>
+
+      <!-- Kepala Sekolah SMP -->
+      <div class="card">
+        <img src="ust herman.jpg" alt="Kepala Sekolah SMP" />
+        <h3>Kepala Sekolah SMP</h3>
+        <h1>Suherman S.Pdi</h1>
+        <p class="p1">
+          Dengan pendekatan kepemimpinan yang inspiratif, beliau menciptakan lingkungan belajar yang kondusif dan mendukung perkembangan karakter serta akademik siswa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pendidikan yang ditawarkan-->
+  <section id="Pendidikan yang ditawarkan">
+    <h2 style="background-color:skyblue;">Pendidikan yang ditawarkan</h2>
+
+    <div class="box 2">
+    <div class="list-section">
+      <b>
+       <ul>Tahfidz
+       </b>
+        <ul>
+        <li>Smart Tahfidz</li>
+        <li>Reguler</li>
+        </ul>
+      </ul>
+      <b>
+       <ul>SMP
+       </b>
+        <ul>
+        <li>Unggulan</li>
+        <li>Reguler</li>
+        </ul>
+      </ul>
+      <b>
+       <ul>SMK
+       </b>
+        <ul>
+        <li>Pengembangan Perangkat Lunak dan Gim (PPLG)</li>
+        <li>Desain Komunikasi Visual (DKV)</li>
+        </ul>
+      </ul>
+    </div>
+    </div>
+  </section>
+    </p>
+     <!-- Keunggulan Lulusan PPLG -->
+  <section id="Keunggulan Lulusan PPLG">
+    <h2 style="background-color: skyblue;">Keunggulan Lulusan PPLG</h2>
+    <div class="list-section">
+      <ul>
+        <li>Programmer</li>
+        <li>Database Engineer</li>
+        <li>Web Developer</li>
+        <li>Web Enginer</li>
+      </ul>
+    </div>
+  </section>
+    <!-- Keunggulan Lulusan DKV-->
+  <section id="Keunggulan Lulusan DKV">
+    <h2 style="background-color: skyblue;">Keunggulan Lulusan DKV</h2>
+    <div class="list-section">
+      <ul>
+        <li>Grapic Designer</li>
+        <li>Content Creator</li>
+        <li>Photografer</li>
+        <li>Videografer</li>
+        <li>Animator</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Program Pendidikan -->
+  <section id="PROGRAM PENDIDIKAN">
+    <h2  style="background-color:skyblue;">Program Pendidikan</h2>
+    <div class="list-section">
+      <ul>
+        <li>Tahfidzul Qur’an (Smart Tahfidz 30 bulan khatam 30 juz, Reguler, Unggulan)</li>
+        <li>SMP Reguler</li>
+        <li>SMK dengan jurusan Pengembangan Perangkat Lunak dan GIM serta Design Komunikasi Visual</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Ekstrakurikuler -->
+  <section id="Ekstrakurikuler">
+    <h2 style="background-color: skyblue;">Ekstrakurikuler</h2>
+    <div class="list-section">
+      <ul>
+        <li>Tilawatil Qur'an</li>
+        <li>Qiro'atul Kutub</li>
+        <li>Tamrinul Khitobah</li>
+        <li>Keorganisasian Santri</li>
+        <li>Hadroh</li>
+        <li>OSIS</li>
+        <li>PMR</li>
+        <li>Bola Voli</li>
+        <li>KIR</li>
+        <li>Paskibra</li>
+        <li>Videografer</li>
+        <li>Public Speaking</li>
+        <li>Pramuka</li>
+        <li>Kaligrafi</li>
+      </ul>
+    </div>
+  </section>
+
+  </section>
+  <section id="beasiswa">
+    <h2 style="background-color: skyblue;">Beasiswa</h2>
+    <p>
+      <div class="box5">
+    <div class="list-section">
+      <ul>
+        <li>Beasiswa Calon Santri Baru Berprestasi (Tahfidz, MTQ, OSN, Mapsi)</li>
+        <li>Beasiswa Smart Tahfidz</li>
+      </ul>
+    </div>
+    </div>
+    </p>
+  </section>
+
+  <!-- Fasilitas -->
+  <section id="fasilitas">
+    <h2 style="background-color:skyblue;"> fasilitas</h2>
+    <div class="list-section">
+      <ul>
+        <li>Masjid dengan kapasitas 1000 jamaah</li>
+        <li>Asrama putra dan putri (65 kamar)</li>
+        <li>Aula / ruang pertemuan</li>
+        <li>16 Ruang kelas</li>
+        <li>Perpustakaan</li>
+        <li>Lab. Komputer PPLG</li>
+        <li>Lab. Komputer DKV</li>
+        <li>Lab. IPA</li>
+        <li>70 Kamar Mandi</li>
+      </ul>
+    </div>
+  </section>
+   <!-- Persyaratan -->
+  <section id="persyaratan">
+    <h2 style="background-color:skyblue;">Persyaratan</h2>
+    <div class="list-section">
+      <ul>
+        <li>Fotocopy KK</li>
+        <li>Fotocopy Akte Kelahiran</li>
+        <li>Fotocopy  KTP orang tua</li>
+        <li>Pas Foto 3x4 (2 lembar)</li>
+        <li>Fotocopy Nilai Raport (Semester 1 kelas VI atau Kelas IX)</li>
+      </ul>
+    </div>
+  </section>
+  <!-- PPDB Section -->
+  <section id="ppdb">
+     <h2 style="background-color: skyblue;">penerimaan peserta didik baru(PPDB)</h2>
+    <p>
+      Bergabunglah bersama kami dan wujudkan potensi terbaik Anda. Ponpes Al-Qur'an Zaenuddin menyediakan pendidikan berkualitas dengan program unggulan yang mengintegrasikan aspek akademik dan karakter. Segera daftarkan diri Anda untuk meraih masa depan yang gemilang!
+    </p>
+    <ul style="background-color: skyblue;" class="btn"><p></p>
+      <h4>Gelombang 1</h4>
+      <p> 26 September 2024 - 31 Januari 2025</p>
+      </h4>Gelombang 2</h4>
+      <p> 1 Februari 2025 - 30 Mei 2025</p>
+    <a href="http://bit.ly/PSB-Al-QuranZaenuddin" class="btn">Daftar Sekarang</a>
+  </section>
+
+  <!-- Penawaran Sekolah -->
+  <section id="penawaran">
+    <h2 style="background-color: skyblue;">Profil Penawaran Sekolahh</h2>
+    <p style="text-align: center; max-width:800px; margin: auto 0 40px;">
+      <p align="center">
+      Kami menyediakan pendidikan berkualitas dengan program-program unggulan yang mengintegrasikan aspek akademik dan karakter, sehingga dapat mempersiapkan siswa menghadapi tantangan masa depan.
+    </p></p>
+    <div class="flex">
+      <div class="card offer-card">
+        <img src="f.png"width="100"height="80" alt="Program Akademik" />
+        <h3>Program Akademik Unggulan</h3>
+        <p>
+          Kurikulum modern dan inovatif untuk mendukung perkembangan ilmu pengetahuan dan keterampilan praktis siswa.
+        </p>
+      </div>
+      <div class="card offer-card">
+        <img src="eskul.jpg" alt="Kegiatan Ekstrakurikuler" />
+        <h3>Kegiatan Ekstrakurikuler</h3>
+        <p>
+          Beragam kegiatan yang dirancang untuk mengasah bakat dan minat siswa serta membangun karakter melalui pengalaman nyata.
+        </p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://bit.ly/PSB-Al-QuranZaenuddin" class="btn">Daftar Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Beasiswa -->
+  <section id="beasiswa">
+    <h2 style="background-color:skyblue;">Program Beasiswa</h2>
+    <p>Kami menawarkan beasiswa untuk calon santri berprestasi di bidang Tahfidz, MTQ, OSN, Mapsi dan juga beasiswa Smart Tahfidz.</p>
+  </section>
+
+<!-- kegiatan santri -->
+<section id="kegiatan santri">
+<h2 style ="background-color:skyblue;">jadwal harian santri</h2>
+<table border="1">
+   <tr style="background-color: skyblue ;">
+<td>jam</td>
+<td>Nama kegiatan</td>
+</tr>
+<tr>
+<td>03;30 -04;15</td>
+<td>tahajud dan tadarus persiapan setoran</td>
+</tr>
+<tr>
+<td>04;15 - 05;15</td>
+<td>sholat shubuh dan pembacaan wirid dan Rotib Al Athos</td>
+</tr>
+<tr>
+<td>05;15 - 06;15</td>
+<td>setoran menambah hafalan Al-Qur'an</td>
+</tr>
+<tr>
+<td>06;15 - 07;30</td>
+<td>Persiapan sekolah dan sarapan</td>
+</tr>
+<tr>
+<td>07;30 - 07;45</td>
+<td>Sholat Dkuha dan tadarus Al-Qur'an Bersama</td>
+</tr>
+<tr>
+<td>07;45 - 12;45</td>
+<td>Kegiatan KBM Sekolah</td>
+</tr>
+<tr>
+<td>15;15 -16;00</td>
+<td>Sholat Ashar dan pembacaan surat Al-Waqiah</td>
+</tr>
+<tr>
+<td>16;00 - 17;00</td>
+<td>Murajaah Hafalan baru Minimal Seperempat</td>
+</tr>
+<tr>
+<td> 18;00 - 19;00</td>
+<td> Sholat Magrib dan dzikir /pembacaan Rotib Al Hadad</td>
+</tr>
+<tr>
+<td>19;00 - 20;00</td>
+<td>Sholat Isya & Persiapan Setoran hafalan baru</td>
+</tr>
+<tr>
+<td>20;00 -21;00</td>
+<td>Setoran menambah hafalan baru</td>
+</tr>
+<tr>
+<td>21;00 - 21;45</td>
+<td>Tadarus wajib /Murajaah hafalan baru</td>
+</tr>
+<tr>
+<td>22.00 - 03.00</td>
+<td> Tidur</td>
+</tr>
+</table>
+<!-- profil -->
+<section id="Profil">
+    <h2 style="background-color:skyblue;">Profil</h2>
+    <div class="flex">
+      <div class="card offer-card">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/M_m10mj5G5w?si=ewsCOtTLaW59Sfuk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      </section>       
+<!-- contact person -->
+  <section id="contact person">
+    <h2 style="background-color: skyblue;">Contact Person</h2>
+    <p style="text-align: center; max-width:10000px; margin: auto 0 20px;">
+      Hubungi Kami Untuk pertanyaan lebih lanjut melalui kontak dan media sosial berikut :
+      <br>
+      <img src="t.jpg" alt="facebook Icon" width="30" height="30"><a href="https://www.facebook.com/pondokpesantrenzaenuddin/" target="_blank">
+      pondokpesantrenzaenuddin</a><br>
+      <img src="6.jpg" width="30" height="30"><a href="https://www.instagram.com/ponpes_alquranzaenu/" target="_blank">ponpes_alquranzaenuddin/</a><br>
+      <img src="g.png" alt="youtube Icon" width="30" height="30"><a href="https://youtube.com/@ponpesalza6717?si=pdy7KhCJNR02KhUM" target="_blank">@ponpes_alquranzaenuddin</a>
+      <br>
+      <img src="t.jfif" width="30" height="30">
+      Admin PSB SMP : 085641357780
+      <br>
+      <img src="t.jfif" width="30" height="30">
+      Admin PSB SMP : 087758384622<br>
+            <h4><p align="center">JL.Raya Pantura Tegal-Pemalang KM 09 Maribaya Kramat-Tegal.</p></h4>
+</section>
+
+<!-- prestasi -->
+   <section id="prestasi">
+    <h2 style="background-color:skyblue;">Prestasi</h2>
+ <div class="flex">
+      <div class="card offer-card">
+        <img src="eskul.jpg" alt="Program Akademik" />
+        <img src="prmka.jpg" alt="Program Akademik" />
+        <h4 style="background-color:skyblue;">Akademik</h4>
+      </div>
+  <div class="card offer-card">
+        <img src="beasiswa.jpg" alt="Kegiatan Ekstrakurikuler" />
+        <img src="ngaji.jpg" alt="Kegiatan Ekstrakurikuler" />
+        <h4 style="background-color:skyblue;">Santri</h4>
+  </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://bit.ly/PSB-Al-QuranZaenuddin" class="btn">Daftar Sekarang</a>
+    </div>
+  </section>
+  <!-- Galeri Kegiatan -->
+  <section id="gallery">
+    <h2 style="background-color:skyblue;">Kegiatan Kami</h2>
+    <div class="gallery">
+      <img src="kajian kitab - Copy.jpg" alt="Kegiatan 1" />
+      <img src="storn.jpg" alt="Kegiatan 2"/>
+      <img src="ngaji.jpg" alt="Kegiatan 3"/>
+      <img src="maulid.jpg"alt="Kegiatan 4"/>
+      <img src="prmka.jpg" alt="Kegiatan 5"/>
+      <img src="membaca.png" alt="Kegiatan 6">
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Desti ilmi. All rights reserved.</p>
+  </footer>
+</body>
+</html>
